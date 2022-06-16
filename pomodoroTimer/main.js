@@ -4,22 +4,28 @@ const startButton = document.querySelector('.start');
 const settingsButton = document.querySelector('.settings');
 
 var timer;
+var startFlag = true;
+
+const checkValidTime = (minutes, seconds) => {
+
+    if (!(minutes >= 0 && minutes < 60) || !(seconds >= 0 && seconds < 60) || minutes == "" || seconds == "") {
+
+        return false;
+    } else {
+
+        return true;
+    }
+}
 
 startButton.addEventListener('click', () => {
 
-    startButton.innerHTML = "Stop";
+    if (checkValidTime(minutes.value, seconds.value)) {
 
-    timer = setInterval(() => {
-        
-        if (seconds.value == 0) {
+        startTimer();
+    } else {
 
-            minutes.value -= 1;
-            seconds.value = 60;
-        } else {
-
-            seconds.value -= 1;
-        }
-    }, 1000);
+        alert("Dear user, Please enter valid time ; )");
+    }
 })
 
 settingsButton.addEventListener('click', () => {
@@ -28,6 +34,31 @@ settingsButton.addEventListener('click', () => {
     seconds.disabled = false;
     stopTimer();
 })
+
+const startTimer = () => {
+
+    if (startFlag == true) {
+
+        startButton.innerHTML = "Stop";
+        startFlag = false;
+
+        timer = setInterval(() => {
+        
+        if (seconds.value == 0) {
+
+            minutes.value -= 1;
+            seconds.value = 59;
+        } else {
+
+            seconds.value -= 1;
+        }
+    }, 1000);
+    } else {
+
+        startFlag = true;
+        stopTimer();
+    }
+}
 
 const stopTimer = () => {
 
