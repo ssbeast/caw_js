@@ -1,13 +1,15 @@
 const ringColor = document.querySelector('.ring');
-const minutes = document.querySelector('#minutes__input');
-const seconds = document.querySelector('#seconds__input');
 const startButton = document.querySelector('.start');
 const settingsButton = document.querySelector('.settings');
+const minutes = document.querySelector('#minutes__input');
+const seconds = document.querySelector('#seconds__input');
 
-var timer;
-var isStartValid = true;
+// declaring letiables
+let timer;
+let isStartValid = true;
 
-const checkValidTime = (minutes, seconds) => {
+// function to check if time input by user is valid or not
+const isValidTime = (minutes, seconds) => {
 
     if (!(minutes >= 0 && minutes < 60) || !(seconds >= 0 && seconds < 60) || minutes.trim() == "" || seconds.trim() == "") {
 
@@ -18,22 +20,25 @@ const checkValidTime = (minutes, seconds) => {
     }
 }
 
+// start timer if input by uswer is valid, else give an alert message
 startButton.addEventListener('click', () => {
 
     minutes.disabled = true;
     seconds.disabled = true;
 
-    if (checkValidTime(minutes.value, seconds.value)) {
+    if (isValidTime(minutes.value, seconds.value)) {
 
         startTimer();
     } else {
 
+        // alert message when input is not valid, and time resets to default
         alert("Dear user, Please enter valid time ; )");
         minutes.value = "00";
         seconds.value = "15";
     }
 })
 
+// input time by user by clicking gear setting icon
 settingsButton.addEventListener('click', () => {
 
     minutes.disabled = false;
@@ -41,6 +46,7 @@ settingsButton.addEventListener('click', () => {
     stopTimer();
 })
 
+// function to start the timer, when user clicks starts
 const startTimer = () => {
 
     if (isStartValid == true) {
@@ -50,6 +56,7 @@ const startTimer = () => {
 
         timer = setInterval(() => {
 
+            // condition to check when timer ends
             if (minutes.value == 0 && seconds.value == 0) {
 
                 stopTimer();
@@ -57,6 +64,7 @@ const startTimer = () => {
 
                 setTimeout(() => {
 
+                    // alert messgage when timer ends, and ring turns to red color
                     alert("GAME OVER! Time's UP ; )");
                     ringColor.style.stroke = "#09A65A";
                 }, 100)
@@ -81,6 +89,7 @@ const startTimer = () => {
     }
 }
 
+// function to stop the timer, and toggle stop button to start button
 const stopTimer = () => {
 
     startButton.innerHTML = "Start";
