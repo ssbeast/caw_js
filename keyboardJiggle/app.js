@@ -1,19 +1,18 @@
+// importing nextKey, jiggleKey, jiggleNext from utils.js
+import {nextKey, jiggleKey, jiggleNext} from "./utils.js";
+
 // creating keys array containing all keys
 const keysArray = document.querySelectorAll('.key');
 
-// declaring variables
-let nextKey, jiggleKey;
-
-// function to jiggle a random next key
-const jiggleNext = () => {
-
-    nextKey = Math.floor((Math.random() * keysArray.length) - 1);
-    keysArray[nextKey].classList.add('jiggle');
-    jiggleKey = keysArray[nextKey].getAttribute('data-key');
-}
-
 // if user presses same key, then next random key starts jiggling
 document.addEventListener('keydown', (e) => {
+
+    // condition to check if tab key is pressed and its default behaviour is prevented
+    if (e.keyCode == 0 || e.keyCode == 9) {
+        
+        e.preventDefault();
+        e.stopPropagation();
+    }
 
     if (e.key.toUpperCase() == jiggleKey) {
 
@@ -24,4 +23,10 @@ document.addEventListener('keydown', (e) => {
 
 // calling jiggleNext function to jiggle first random key
 jiggleNext();
+
+// exporting keysArray to use in utils.js
+export {
+
+    keysArray
+}
 
