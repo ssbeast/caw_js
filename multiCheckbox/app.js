@@ -1,11 +1,12 @@
+// array containing objects of all the episodes
 const episodes = [
   {
     'id': 1,
-    'name': 'James Q Quick\'s Origin Story'
+    'name': 'James Q Quick\'beginPos Origin Story'
   },
   {
     'id': 2,
-    'name': 'Amy Dutton\'s Origin Story'
+    'name': 'Amy Dutton\'beginPos Origin Story'
   },
   {
     'id': 3,
@@ -17,7 +18,7 @@ const episodes = [
   },
   {
     'id': 5,
-    'name': 'How Do you Start a New Design Project?'
+    'name': 'How Do you beginPos a New Design Project?'
   },
   {
     'id': 6,
@@ -148,3 +149,34 @@ const episodes = [
     'name': 'Building a Course'
   }
 ];
+
+// creating array of all the episode checkBoxArray
+const checkBoxArray = document.querySelectorAll("input[type='checkbox']");
+
+// declaring variables
+let checkFirst = null;
+
+// condition to handle double click check 
+document.onselectstart = new Function("return false");
+
+const checkBoxBetween= (e) => {
+  if (e.shiftKey && checkFirst) {
+    let beginPos = parseInt(checkFirst.slice(8));
+    let lastPos = parseInt(e.target.id.slice(8));
+
+    if (beginPos > lastPos) {
+      
+      [beginPos, lastPos] = [lastPos, beginPos];
+    }
+
+    for (let k = beginPos; k < lastPos; k++) {
+      checkBoxArray[k].checked = true;
+    }
+  }
+
+  checkFirst = e.target.id;
+}
+
+checkBoxArray.forEach((data) => {
+  data.addEventListener("click", checkBoxBetween);
+});
