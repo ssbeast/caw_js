@@ -150,33 +150,23 @@ const episodes = [
   }
 ];
 
+// importing checkBoxBetween from utils.js
+import { checkBoxBetween } from "./utils.js";
+
 // creating array of all the episode checkBoxArray
 const checkBoxArray = document.querySelectorAll("input[type='checkbox']");
-
-// declaring variables
-let checkFirst = null;
 
 // condition to handle double click check 
 document.onselectstart = new Function("return false");
 
-const checkBoxBetween= (e) => {
-  if (e.shiftKey && checkFirst) {
-    let beginPos = parseInt(checkFirst.slice(8));
-    let lastPos = parseInt(e.target.id.slice(8));
-
-    if (beginPos > lastPos) {
-      
-      [beginPos, lastPos] = [lastPos, beginPos];
-    }
-
-    for (let k = beginPos; k < lastPos; k++) {
-      checkBoxArray[k].checked = true;
-    }
-  }
-
-  checkFirst = e.target.id;
-}
-
+// Iterating over checkBoxArray and checking when boxes get selected
 checkBoxArray.forEach((data) => {
+
   data.addEventListener("click", checkBoxBetween);
 });
+
+// exporting checkBoxArray
+export {
+
+  checkBoxArray
+}
