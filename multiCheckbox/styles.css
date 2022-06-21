@@ -9,6 +9,7 @@ body {
   align-items: center;
   font-family: 'Nunito Sans', sans-serif;
   justify-content: center;
+  user-select: none;
 }
 
 .wrapper {

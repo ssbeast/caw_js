@@ -156,9 +156,6 @@ import { checkBoxBetween } from "./utils.js";
 // creating array of all the episode checkBoxArray
 const checkBoxArray = document.querySelectorAll("input[type='checkbox']");
 
-// condition to handle double click check 
-document.onselectstart = new Function("return false");
-
 // Iterating over checkBoxArray and checking when boxes get selected
 checkBoxArray.forEach((data) => {
 
