@@ -20,9 +20,9 @@ const checkBoxBetween= (e) => {
       }
   
       // Iterating over array and selecting all boxes inbetween
-      for (let k = beginPos; k < lastPos; k++) {
+      for (let pos = beginPos; pos < lastPos; pos++) {
   
-        checkBoxArray[k].checked = true;
+        checkBoxArray[pos].checked = true;
       }
     } else {
   
