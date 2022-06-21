@@ -18,11 +18,13 @@ const checkBoxBetween= (e) => {
         
         [beginPos, lastPos] = [lastPos, beginPos];
       }
+
+      let isChecked = e.target.checked;
   
       // Iterating over array and selecting all boxes inbetween
       for (let pos = beginPos; pos < lastPos; pos++) {
   
-        checkBoxArray[pos].checked = true;
+        checkBoxArray[pos].checked = isChecked;
       }
     } else {
   
