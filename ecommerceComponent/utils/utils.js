@@ -1,10 +1,6 @@
 // importing from app.js
-import {foodPrice,
-    taxPrice,
-    totalPrice,
-    cartEmpty,
-    cartSummary,
-    menuItems} from "./app.js";
+import {foodPrice, taxPrice, totalPrice, cartEmpty, cartSummary} from "./container.js";
+import { menuItems } from "../menuItems.js";
 
 // declaring variables
 let foodBillPrice = 0;

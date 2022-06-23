@@ -44,32 +44,8 @@ const menuItems = [
     }
 ]
 
-// importing addFoodCart from utils.js
-import { addFoodToCart } from "./utils.js";
-
-const foodPrice = document.querySelector(".amount.price.subtotal");
-const taxPrice = document.querySelector(".amount.price.tax");
-const totalPrice = document.querySelector(".amount.price.total");
-const cartAddArray = document.querySelectorAll(".add");
-const cartSummary = document.querySelector(".cart-summary");
-const cartEmpty = document.querySelector(".empty");
-
-// Iterating over cartAddArray and adding it to card when user clicks on add
-cartAddArray.forEach((data, pos) => {
-
-    data.addEventListener('click', () => {
-
-        addFoodToCart(data, pos);
-    })
-})
-
-// exporting to use in utils.js
+// exporting menuItems
 export {
 
-    foodPrice,
-    taxPrice,
-    totalPrice,
-    cartEmpty,
-    cartSummary,
     menuItems
 }
