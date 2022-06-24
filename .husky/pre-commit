@@ -3,3 +3,4 @@
 
 npx pretty-quick --staged ng lint ng test
 npx lint-staged
+npx stylelint "**/*.css" --fix
